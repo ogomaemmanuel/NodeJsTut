@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Foundation Template</title>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <!-- <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation.css"> -->
+  
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+<link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <!-- foundation navigation -->
+  <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+    <div class="title-bar-title">Menu</div>
+  </div>
+  <div class="top-bar" id="responsive-menu" data-topbar>
+    <div class="top-bar-left">
+      <ul class="menu expanded icons">
+        <li>
+          <a href="#">
+            <i class="fi-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Service</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li>
+          <input type="search" placeholder="Search">
+        </li>
+        <li>
+          <button type="button" class="button">Search</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- foundation grid -->
+
+  <div class="grid-container fluid">
+    <div class="grid-x">
+      <div class="medium-6 large-3 small-12 cell">
+        <h4>Add Product</h4>
+        <!-- foundation form -->
+        <form>
+          <div class="grid-x grid-padding-x">
+
+            <div class="medium-12 small-12  cell">
+              <label>Product Name
+                <input name="name" id='pname' type="text" placeholder="Enter product name">
+              </label>
+            </div>
+            <div class="medium-12 small-12  cell">
+              <label>Price
+                <input name="price" id="pprice" type="number" placeholder="Enter item price">
+              </label>
+            </div>
+
+            <div class="medium-12 small-12 cell">
+              <label>Quantity
+                <input name="quantity" id="pquantity" type="number" placeholder="Enter quantity">
+              </label>
+            </div>
+            <div class="medium-12 small-12 cell">
+              <label>Category
+                <select id="pcategory">
+                  <option value="Electronic">Electronic</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Furniture">Furniture</option>
+                </select>
+              </label>
+            </div>
+
+
+            <div class="medium-12 small-12  cell">
+              <button onclick="addProduct()" type="button" class="success button expanded">Save</button>
+              <button onclick="addProductWithImage()" type="button" class="success button expanded">Save With Image</button>
+              <button onclick="getPosts(this)" type="button" class="success button expanded">Get Posts</button>
+              <button onclick="getCommentAndPost()" type="button" class="success button expanded">Promise All</button>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+      <div class="medium-6 large-9 small-12 cell">
+        <h4>Available Products</h4>
+        <!-- foundation table table -->
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity Available</th>
+              <th>Details</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Samsung Tv </td>
+              <td>Ksh 3000</td>
+              <td>70</td>
+              <td>
+                <button data-open="productDetailModal" class="button">
+                  <i class="fi-eye"></i>
+                </button>
+              </td>
+              <td>
+                <button data-open="productEditModal" class="button">
+                  <i class="fi-pencil"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>Apple Iphone</td>
+              <td>Ksh 1000</td>
+              <td>80</td>
+              <td>
+                <button data-open="productDetailModal" class="button">
+                  <i class="fi-eye"></i>
+                </button>
+              </td>
+              <td>
+                <button data-open="productEditModal" class="button">
+                  <i class="fi-pencil"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>Iron Box</td>
+              <td>Ksh 1200</td>
+              <td>4000</td>
+              <td>
+                <button data-open="productDetailModal" class="button">
+                  <i class="fi-eye"></i>
+                </button>
+              </td>
+              <td>
+                <button data-open="productEditModal" class="button">
+                  <i class="fi-pencil"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination text-center">
+          <li class="pagination-previous disabled">Previous
+            <span class="show-for-sr">page</span>
+          </li>
+          <li class="current">
+            <span class="show-for-sr">You're on page</span> 1</li>
+          <li>
+            <a href="#" aria-label="Page 2">2</a>
+          </li>
+          <li>
+            <a href="#" aria-label="Page 3">3</a>
+          </li>
+          <li class="pagination-next">
+            <a href="#" aria-label="Next page">Next
+              <span class="show-for-sr">page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <!-- modal -->
+  <div class="reveal" id="productEditModal" data-reveal>
+    <div class="grid-container">
+      <div class="grid-x">
+        <form>
+          <div class="grid-x grid-padding-x">
+
+            <div class="medium-12 cell">
+              <label>Product Name
+                <input type="text" placeholder="Enter product name">
+              </label>
+            </div>
+            <div class="medium-12 cell">
+              <label>Price
+                <input type="number" placeholder="Enter item price">
+              </label>
+            </div>
+
+            <div class="medium-12 cell">
+              <label>Quantity
+                <input type="number" placeholder="Enter quanity">
+              </label>
+            </div>
+            <div class="medium-12 cell">
+              <label>Category
+                <select>
+                  <option value="husker">Electronic</option>
+                  <option value="starbuck">Clothing</option>
+                  <option value="hotdog">Furniture</option>
+                </select>
+              </label>
+            </div>
+
+
+            <div class="medium-12 cell">
+              <button type="submit" class="success button expanded">Save</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" id="productDetailModal" data-reveal>
+    <h1>Product Details</h1>
+    <p class="lead">Product Name:
+      <span></span>
+    </p>
+    <p class="lead">Price: 700000</p>
+    <p>Quanity: 90</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script>
+    "use strict"
+    //x=45;
+    $(document).ready(function () {
+      $(document).foundation();
+      dynamicTypingTest(7,8);
+      dynamicTypingTest("Emmanuel","ogoma");
+
+    });
+
+    window.addEventListener("dataFetched", function (e) {
+      e.detail.htmlElement.innerHTML = "Get Posts";
+      e.detail.htmlElement.disabled = false;
+      alert(e.detail.data.length);
+
+
+    })
+
+    //Use of  Encapsulation
+    //Use of function Costructor to create objects
+    function Product(pname, pprice, pquantity, pcategory) {
+      //private properties using let
+      let name = pname;
+      let price = pprice;
+      let quatity = pquantity;
+      let category = pcategory;
+      //public functions, setters and getters
+      return {
+
+        setName: function (newName) {
+          name = newName;
+        },
+
+        getName: function () {
+          return name;
+        },
+        setPrice: function (newPrice) {
+          price = newPrice;
+        },
+        getPrice: function () {
+          return price;
+        },
+        setQuantity: function (newQuantity) {
+          quatity = newQuantity;
+        },
+        //Use of Arrow Function
+        getQuantity: () => {
+          return quatity;
+        },
+        //Use of Arrow Function
+        setCategory: (newCategory) => {
+          category = newCategory;
+        },
+        getCategory: function () {
+          return category;
+
+
+        }
+
+      }
+
+    }
+    // Product.prototype.getDetails = function () {
+    //   return "product details"
+    // }
+
+    // //Overiding the default to string Method inhrited fro  the Object class
+    // Product.prototype.toString = function () {
+    //   return "product saved with details"
+
+    // }
+
+    var products = [];
+
+    function addProduct() {
+
+      let newProduct = getProductDetailsFromUi();
+      let product = new Product(
+
+        newProduct.productName,
+
+        newProduct.productPrice,
+
+        newProduct.productQuatity,
+
+        newProduct.productCategory);
+
+      alert(product.getName() + " Saved");
+
+      //Use of Closure
+      function addNewProductToProducts() {
+
+        products.push(product);
+
+        console.log(products.length);
+      }
+
+      addNewProductToProducts();
+      //cloneProduct(product);
+    };
+    //Inheritance
+    function addProductWithImage() {
+      let newProduct = getProductDetailsFromUi();
+      function ProductWithImage(pname, pprice, pquantity, pcategory, pimageUrl) {
+        Product.call(this, pname, pprice, pquantity, pcategory);
+        this.imageUrl = pimageUrl;
+      };
+
+      ProductWithImage.prototype = Object.create(Product.prototype);
+      ProductWithImage.prototype.constructor = ProductWithImage;
+      //let newProductObject=ProductWithImage("","","","","");
+      console.log(ProductWithImage.prototype);
+
+    }
+
+
+    function getProductDetailsFromUi() {
+      let product = {};
+      product.productName = document.getElementById("pname").value;
+
+      product.productPrice = document.getElementById("pprice").value;
+
+      product.productQuatity = document.getElementById("pquantity").value;
+
+      product.productCategory = document.getElementById("pcategory").value;
+
+      //console.log(product.productPrice );
+      return product;
+
+    }
+// promise
+    function getData(url) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onload = () => resolve(xhr.responseText);
+        xhr.onerror = () => reject(xhr.statusText);
+        xhr.send();
+      });
+    }
+    //promises
+    function getPosts(e) {
+      console.log(e);
+      e.innerHTML = "Fetching Data";
+      e.disabled = true;
+      getData("https://jsonplaceholder.typicode.com/posts").then(x => {
+        e.innerHTML = "Data Fetched";
+        console.log(JSON.parse(x));
+
+        //onDataFetched(JSON.parse(x), e);
+        setTimeout(onDataFetched, 2000, JSON.parse(x), e);//  onDataFetched(JSON.parse(x),e);
+      },error=>{
+        console.log("post error");
+      }).catch(error=>{
+
+        console.log("post error catch");
+      })
+    }
+// custom event
+    function onDataFetched(fetchedData, targetElement) {
+      let dataFetchedEvent = new CustomEvent("dataFetched",
+        { detail: { data: fetchedData, htmlElement: targetElement } });
+      window.dispatchEvent(dataFetchedEvent);
+    }
+
+    function Post(pUserId, pId, ptitle, pbody) {
+      this.userId = pUserId;
+      this.id = pId;
+      this.title = ptitle;
+      this.body = pbody;
+    }
+
+//  promises
+    function getCommentAndPost() {
+      let postUrl = "https://jsonplaceholder.typicode.com/posts";
+      let commentsUrl = "https://jsonplaceholder.typicode.com/comments";
+      Promise.all([getData(postUrl), getData(commentsUrl)]).then(data => {
+        //console.log("Posts", JSON.parse(data[0]).length);
+        //console.log("Comments", JSON.parse(data[1]).length);
+        alert("Posts "+ JSON.parse(data[0]).length+  "Comments "+JSON.parse(data[1]).length);
+      }, (error) => {
+        console.log("error fetching data");
+      }).catch(error => {
+        console.log("Failed Fetching");
+
+      })
+    }
+
+    function getUserThenComments() {
+      let getUserId = new Promise(function (resolve, reject) {
+        resolve(1);
+      });
+
+      getUserId.then(userId => {
+        getData("https://jsonplaceholder.typicode.com/posts/" + userId).then((posts) => {
+          console.log(posts);
+
+        });
+
+      })
+    }
+// dynamic typing
+    function dynamicTypingTest(v1, v2){
+      return v1+v2;
+    }
+
+
+  </script>
+ 
+</body>
+
+</html>
